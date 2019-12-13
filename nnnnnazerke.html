@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<link href="style.css" rel="stylesheet" type="text/css"/>
+  <title>First game Nazerke</title>
+ <link >
+</head>
+<body>
+<div style="position: relative;background-color:yellow ;width:100%; height:102px;top:40px";>
+<h1>Ойыннын аты: Крессики - Нолики </h1>
+<h3>Ойыннын шарты: Бос турган уяшыктарга Х немесе О ты кою аркылы ойнау. Оны колдененнен, тыгынен, диагональынан тылылген бырыншысы женеды. 
+Бырыншы журетын - Х</h3>
+<div><input type="button"><a href="#html" div class="naz"> Ойыннын шарты</div></a></li>
+background-image:url(kara.jpg);
+<style="position: relative;background-color:blue "/></div><br><p></p><p></p>
+<div id="box">
+    <input type="button" onclick="onClick(this)" style="position: relative;background-color:pink "/>
+    <input type="button" onclick="onClick(this)" style="position: relative;background-color:pink "/>
+    <input type="button" onclick="onClick(this)"style="position: relative;background-color:pink "> 
+    <input type="button" onclick="onClick(this)" style="position: relative;background-color:pink ">
+    <input type="button" onclick="onClick(this)" style="position: relative;background-color:pink ">
+    <input type="button" onclick="onClick(this)" style="position: relative;background-color:pink ">
+    <input type="button" onclick="onClick(this)"style="position: relative;background-color:pink "> 
+    <input type="button"onclick="onClick(this)"style="position: relative;background-color:pink "> 
+    <input type="button" onclick="onClick(this)" style="position: relative;background-color:pink ">
+  </div>
+  <input type="button" id="resetButton" onclick="reset()" value="Jana Oiin" />
+  <hr>
+  <p> 
+	Ойынды жасаған: <img style="position: relative; weight:20px ; height:20px" src="1.png"><a href="0"> Nazerke Narikbai</a></p>
+	Nur-Sultan Kalasy KazTBU Universutety
+  <script>
+    var gameBox = document.getElementById('box'), playerIndex = 1, players = ['O','X'], resultValues = [],
+        winningCombinations = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
+      
+    function isWinning(value) {
+      var combination, i, j;
+        
+      for (i = 0; i < winningCombinations.length; i++) {
+        combination = winningCombinations[i];
+          
+        for (j = 0; j < combination.length; j++) {
+          if (resultValues[combination[j]] != value) break;
+        }
+          
+        if (j == 3) return true;
+      }
+        
+      return false;
+    }
+
+    function reset() {
+      var i, inputs = gameBox.getElementsByTagName('input');
+      
+      // Reset game cells
+      for (i = 0; i < inputs.length; i++) {
+        inputs[i].disabled = inputs[i].value = '';
+      }
+       
+      playerIndex = 1;
+      resultValues = [];
+    }
+
+    function resetIfWinnerFound() {
+      var i, inputs = gameBox.getElementsByTagName('input');
+
+      // Map cell values       
+      for (i = 0; i < inputs.length; i++) {
+        resultValues[i] = inputs[i].value;
+      }
+        
+      // Check players
+      for (i = 0; i < players.length; i++) {
+        if (isWinning(players[i])) {
+          alert('The winner is '+ players[i] + '!');
+          reset();
+          return;
+        }
+      }
+    }
+
+    function onClick(sender) {
+      sender.disabled = "disabled";
+      sender.value = players[playerIndex];
+
+      playerIndex == 1 ? playerIndex-- : playerIndex++;
+        
+      resetIfWinnerFound();
+    }
+  </script>
+</body>
+</html>

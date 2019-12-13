@@ -1,0 +1,25 @@
+ #box {
+      border: 1px solid pink;
+      height: 312px;
+      width: 312px;
+	  left:50%;
+	  
+    }
+
+    #box input {
+      border: 30px;
+      float: left;
+      font-size: 100px;
+      height: 100px;
+      margin: 2px;     
+	  width: 100px;
+	  down: 50%;
+	 
+    }
+    
+    #resetButton {
+      border: 1px solid red;
+      font-size: 20px;
+      height: 100px;
+      width: 314px;
+	}
